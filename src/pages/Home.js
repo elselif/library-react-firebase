@@ -2,8 +2,7 @@ import { useState,useEffect } from 'react'
 import BookList from '../components/BookList'
 import BookForm from '../components/BookForm'
 
-import {db} from "../firebase/config"
-import {collection,getDocs} from "firebase/firestore"
+
 
 import { useCollection } from '../hooks/useCollection'
 
