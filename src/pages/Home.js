@@ -5,25 +5,30 @@ import BookForm from '../components/BookForm'
 import {db} from "../firebase/config"
 import {collection,getDocs} from "firebase/firestore"
 
+import { useCollection } from '../hooks/useCollection'
+
 export default function Home() {
-  const [books, setBooks] = useState(null)
 
-  useEffect(() =>{
-    const ref = collection(db,'books');
+  const {documents:books} = useCollection('books');
 
-    getDocs(ref)
-      .then((snap) => {
+  // const [books, setBooks] = useState(null)
 
-        let result = [];
+  // useEffect(() =>{
+  //   const ref = collection(db,'books');
 
-        snap.forEach(doc=>{
-          result.push({id:doc.id,...doc.data()})
-        })
+  //   getDocs(ref)
+  //     .then((snap) => {
 
-        setBooks(result);
-      })
+  //       let result = [];
 
-  },[])
+  //       snap.forEach(doc=>{
+  //         result.push({id:doc.id,...doc.data()})
+  //       })
+
+  //       setBooks(result);
+  //     })
+
+  // },[])
 
   return (
     <div className="App">
